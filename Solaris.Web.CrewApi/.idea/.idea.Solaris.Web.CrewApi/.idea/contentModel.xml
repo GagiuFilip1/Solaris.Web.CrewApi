@@ -67,10 +67,12 @@
         <e p="Repositories" t="Include">
           <e p="Interfaces" t="Include">
             <e p="ICaptainRepository.cs" t="Include" />
+            <e p="ICrewMemberRepository.cs" t="Include" />
             <e p="IExplorerersTeamRepository.cs" t="Include" />
             <e p="IRepository.cs" t="Include" />
             <e p="IRobotRepository.cs" t="Include" />
             <e p="IShuttleRepository.cs" t="Include" />
+            <e p="ISimpleSearchRepository.cs" t="Include" />
           </e>
         </e>
         <e p="Services" t="Include">
@@ -99,6 +101,7 @@
         <e p="Repositories" t="Include">
           <e p="Implementations" t="Include">
             <e p="CaptainRepository.cs" t="Include" />
+            <e p="CrewMemberRepository.cs" t="Include" />
             <e p="ExplorersTeamRepository.cs" t="Include" />
             <e p="RobotRepository.cs" t="Include" />
             <e p="ShuttleRepository.cs" t="Include" />
