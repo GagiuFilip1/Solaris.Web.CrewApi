@@ -1,0 +1,9 @@
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\bin\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.deps.json
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\bin\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.dll
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\bin\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.pdb
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\obj\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.csprojAssemblyReference.cache
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\obj\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.csproj.CoreCompileInputs.cache
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\obj\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.AssemblyInfoInputs.cache
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\obj\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.AssemblyInfo.cs
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\obj\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.dll
+C:\Users\Filip\Documents\GitHubPersonal\Solaris.Web.CrewApi\Solaris.Web.CrewApi\Solaris.Web.CrewApi.Core\obj\Debug\netcoreapp3.1\Solaris.Web.CrewApi.Core.pdb
