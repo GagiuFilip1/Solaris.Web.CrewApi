@@ -14,7 +14,7 @@ namespace Solaris.Web.CrewApi.Core.Models.Entities
 
         public DateTime CreationDate { get; set; }
 
-        public Guid ExploreresTeamId { get; set; }
+        public Guid ExplorersTeamId { get; set; }
 
         public ExplorersTeam ExplorersTeam { get; set; }
     }

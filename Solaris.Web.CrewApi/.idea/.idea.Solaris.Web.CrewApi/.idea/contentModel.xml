@@ -93,7 +93,12 @@
         <e p="Data" t="Include">
           <e p="DataContext.cs" t="Include" />
         </e>
-        <e p="Filters" t="Include" />
+        <e p="Filters" t="Include">
+          <e p="CaptainFilter.cs" t="Include" />
+          <e p="ExplorersTeamFilter.cs" t="Include" />
+          <e p="RobotFilter.cs" t="Include" />
+          <e p="ShuttleFilter.cs" t="Include" />
+        </e>
         <e p="Ioc" t="Include">
           <e p="RegistrationKindAttribute.cs" t="Include" />
           <e p="RegistrationType.cs" t="Include" />

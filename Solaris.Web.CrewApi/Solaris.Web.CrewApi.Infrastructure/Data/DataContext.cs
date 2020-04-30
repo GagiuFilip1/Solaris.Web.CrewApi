@@ -28,7 +28,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Data
             modelBuilder.Entity<ExplorersTeam>()
                 .HasOne(t => t.Shuttle)
                 .WithOne(t => t.ExplorersTeam)
-                .HasForeignKey<Shuttle>(t => t.ExploreresTeamId);
+                .HasForeignKey<Shuttle>(t => t.ExplorersTeamId);
 
             modelBuilder.Entity<CrewMember>()
                 .HasOne(t => t.ExplorersTeam)

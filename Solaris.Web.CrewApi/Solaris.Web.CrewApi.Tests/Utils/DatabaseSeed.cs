@@ -50,15 +50,15 @@ namespace Solaris.Web.CrewApi.Tests.Utils
                     ShipNumber = "1A2B3C4D",
                     Name = "NeverGonnaGiveYouUp",
                     CreationDate = DateTime.Now.AddYears(90),
-                    ExploreresTeamId = ExplorersTeam1Id
+                    ExplorersTeamId = ExplorersTeam1Id
                 },
                 new Shuttle
                 {
-                    Id = Shuttle1Id,
+                    Id = Shuttle2Id,
                     ShipNumber = "A1B2C3D4",
                     Name = "NeverGonnaLetYouDown",
                     CreationDate = DateTime.Now.AddYears(100),
-                    ExploreresTeamId = ExplorersTeam1Id
+                    ExplorersTeamId = ExplorersTeam1Id
                 }
             };
         }
@@ -78,7 +78,7 @@ namespace Solaris.Web.CrewApi.Tests.Utils
                 },
                 new Captain
                 {
-                    Id = Captain1Id,
+                    Id = Captain2Id,
                     Age = 41,
                     Email = "2@email",
                     ExplorersTeamId = ExplorersTeam2Id,

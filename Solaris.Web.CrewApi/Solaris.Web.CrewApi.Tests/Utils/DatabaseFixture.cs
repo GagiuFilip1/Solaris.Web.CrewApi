@@ -26,8 +26,8 @@ namespace Solaris.Web.CrewApi.Tests.Utils
             var captains = DatabaseSeed.GetCaptains();
             var robots = DatabaseSeed.GetRobots();
             
-            await DataContext.AddRangeAsync(explorerTeams);
             await DataContext.AddRangeAsync(shuttles);
+            await DataContext.AddRangeAsync(explorerTeams);
             await DataContext.AddRangeAsync(captains);
             await DataContext.AddRangeAsync(robots);
             await DataContext.SaveChangesAsync();
