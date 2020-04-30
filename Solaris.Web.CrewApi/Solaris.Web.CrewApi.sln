@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solaris.Web.CrewApi.Presentation", "Solaris.Web.CrewApi.Presentation\Solaris.Web.CrewApi.Presentation.csproj", "{978B1A75-3B08-4525-BFCE-B4094833FC5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solaris.Web.CrewApi.Core", "Solaris.Web.CrewApi.Core\Solaris.Web.CrewApi.Core.csproj", "{E88D1DA3-D64A-4308-94A4-47796FF7D544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solaris.Web.CrewApi.Infrastructure", "Solaris.Web.CrewApi.Infrastructure\Solaris.Web.CrewApi.Infrastructure.csproj", "{024B5C23-3331-4A6B-8E78-574D36268A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solaris.Web.CrewApi.Tests", "Solaris.Web.CrewApi.Tests\Solaris.Web.CrewApi.Tests.csproj", "{DA44AF9C-2AA5-4A97-9991-478CE75825AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{978B1A75-3B08-4525-BFCE-B4094833FC5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{978B1A75-3B08-4525-BFCE-B4094833FC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{978B1A75-3B08-4525-BFCE-B4094833FC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{978B1A75-3B08-4525-BFCE-B4094833FC5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88D1DA3-D64A-4308-94A4-47796FF7D544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88D1DA3-D64A-4308-94A4-47796FF7D544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88D1DA3-D64A-4308-94A4-47796FF7D544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88D1DA3-D64A-4308-94A4-47796FF7D544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{024B5C23-3331-4A6B-8E78-574D36268A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{024B5C23-3331-4A6B-8E78-574D36268A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{024B5C23-3331-4A6B-8E78-574D36268A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{024B5C23-3331-4A6B-8E78-574D36268A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA44AF9C-2AA5-4A97-9991-478CE75825AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA44AF9C-2AA5-4A97-9991-478CE75825AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA44AF9C-2AA5-4A97-9991-478CE75825AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA44AF9C-2AA5-4A97-9991-478CE75825AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
