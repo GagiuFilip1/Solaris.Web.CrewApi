@@ -8,11 +8,11 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ExplorersTeams",
-                columns: table => new
+                "ExplorersTeams",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "varchar(256)", nullable: true),
+                    Name = table.Column<string>("varchar(256)", nullable: true),
                     DepartedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -21,17 +21,17 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CrewMembers",
-                columns: table => new
+                "CrewMembers",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "varchar(256)", nullable: true),
+                    Name = table.Column<string>("varchar(256)", nullable: true),
                     Type = table.Column<byte>(nullable: false),
                     ExplorersTeamId = table.Column<Guid>(nullable: false),
                     Gender = table.Column<byte>(nullable: true),
                     Age = table.Column<int>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    ProductNumber = table.Column<string>(type: "varchar(256)", nullable: true),
+                    ProductNumber = table.Column<string>("varchar(256)", nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: true),
                     CurrentPlanetId = table.Column<Guid>(nullable: true),
                     CurrentStatus = table.Column<byte>(nullable: true)
@@ -40,20 +40,20 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
                 {
                     table.PrimaryKey("PK_CrewMembers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CrewMembers_ExplorersTeams_ExplorersTeamId",
-                        column: x => x.ExplorersTeamId,
-                        principalTable: "ExplorersTeams",
-                        principalColumn: "Id",
+                        "FK_CrewMembers_ExplorersTeams_ExplorersTeamId",
+                        x => x.ExplorersTeamId,
+                        "ExplorersTeams",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Shuttles",
-                columns: table => new
+                "Shuttles",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    ShipNumber = table.Column<string>(type: "varchar(16)", nullable: true),
-                    Name = table.Column<string>(type: "varchar(256)", nullable: true),
+                    ShipNumber = table.Column<string>("varchar(16)", nullable: true),
+                    Name = table.Column<string>("varchar(256)", nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     ExploreresTeamId = table.Column<Guid>(nullable: false)
                 },
@@ -61,53 +61,53 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
                 {
                     table.PrimaryKey("PK_Shuttles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Shuttles_ExplorersTeams_ExploreresTeamId",
-                        column: x => x.ExploreresTeamId,
-                        principalTable: "ExplorersTeams",
-                        principalColumn: "Id",
+                        "FK_Shuttles_ExplorersTeams_ExploreresTeamId",
+                        x => x.ExploreresTeamId,
+                        "ExplorersTeams",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CrewMembers_ExplorersTeamId",
-                table: "CrewMembers",
-                column: "ExplorersTeamId");
+                "IX_CrewMembers_ExplorersTeamId",
+                "CrewMembers",
+                "ExplorersTeamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CrewMembers_Name",
-                table: "CrewMembers",
-                column: "Name",
+                "IX_CrewMembers_Name",
+                "CrewMembers",
+                "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExplorersTeams_Name",
-                table: "ExplorersTeams",
-                column: "Name",
+                "IX_ExplorersTeams_Name",
+                "ExplorersTeams",
+                "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shuttles_ExploreresTeamId",
-                table: "Shuttles",
-                column: "ExploreresTeamId",
+                "IX_Shuttles_ExploreresTeamId",
+                "Shuttles",
+                "ExploreresTeamId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shuttles_Name",
-                table: "Shuttles",
-                column: "Name",
+                "IX_Shuttles_Name",
+                "Shuttles",
+                "Name",
                 unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CrewMembers");
+                "CrewMembers");
 
             migrationBuilder.DropTable(
-                name: "Shuttles");
+                "Shuttles");
 
             migrationBuilder.DropTable(
-                name: "ExplorersTeams");
+                "ExplorersTeams");
         }
     }
 }

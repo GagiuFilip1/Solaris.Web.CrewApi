@@ -65,7 +65,13 @@
           </e>
         </e>
         <e p="Repositories" t="Include">
-          <e p="Interfaces" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="ICaptainRepository.cs" t="Include" />
+            <e p="IExplorerersTeamRepository.cs" t="Include" />
+            <e p="IRepository.cs" t="Include" />
+            <e p="IRobotRepository.cs" t="Include" />
+            <e p="IShuttleRepository.cs" t="Include" />
+          </e>
         </e>
         <e p="Services" t="Include">
           <e p="Interfaces" t="Include" />
