@@ -84,7 +84,12 @@
           </e>
         </e>
         <e p="Services" t="Include">
-          <e p="Interfaces" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="ICaptainService.cs" t="Include" />
+            <e p="IExplorersTeamService.cs" t="Include" />
+            <e p="IRobotService.cs" t="Include" />
+            <e p="IShuttleService.cs" t="Include" />
+          </e>
         </e>
         <e p="Solaris.Web.CrewApi.Core.csproj" t="IncludeRecursive" />
       </e>
