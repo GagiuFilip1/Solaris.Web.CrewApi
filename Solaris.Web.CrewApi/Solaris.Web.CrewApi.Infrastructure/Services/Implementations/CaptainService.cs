@@ -37,6 +37,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                 if (validationError.Any())
                     throw new ValidationException($"A validation exception was raised while trying to create a Captain : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
                 await CheckExplorersTeamExistAsync(captain.ExplorersTeamId);
+                await CheckExplorersTeamHaveNoCaptainAsync(captain.ExplorersTeamId);
                 await m_repository.CreateAsync(captain);
             }
             catch (ValidationException e)
@@ -126,7 +127,18 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             });
 
             if (!searchResult.Any())
-                throw new ValidationException("No Planet was found for the specified Id");
+                throw new ValidationException("No Explorers team was found for the specified Id");
+        }
+        
+        private async Task CheckExplorersTeamHaveNoCaptainAsync(Guid explorersTeamId)
+        {
+            var (count, _) = await SearchCaptainAsync(new Pagination(), new Ordering(), new CaptainFilter
+            {
+                SearchTerm = explorersTeamId.ToString()
+            });
+
+            if (count != 0)
+                throw new ValidationException("The Explorers Team already have a captain assigned");
         }
     }
 }

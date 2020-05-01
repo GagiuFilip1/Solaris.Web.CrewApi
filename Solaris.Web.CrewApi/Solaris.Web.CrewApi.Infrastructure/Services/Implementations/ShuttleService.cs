@@ -37,6 +37,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                 if (validationError.Any())
                     throw new ValidationException($"A validation exception was raised while trying to create a Shuttle : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
                 await CheckExplorersTeamExistAsync(shuttle.ExplorersTeamId);
+                await CheckExplorersTeamHaveNoShuttleAsync(shuttle.ExplorersTeamId);
                 await m_repository.CreateAsync(shuttle);
             }
             catch (ValidationException e)
@@ -126,7 +127,17 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             });
 
             if (!searchResult.Any())
-                throw new ValidationException("No Planet was found for the specified Id");
+                throw new ValidationException("No Explorers Team was found for the specified Id");
+        }
+
+        private async Task CheckExplorersTeamHaveNoShuttleAsync(Guid explorersTeamId)
+        {
+            var (count, _) = await SearchShuttleAsync(new Pagination(), new Ordering(), new ShuttleFilter
+            {
+                SearchTerm = explorersTeamId.ToString()
+            });
+            if(count > 0)
+                throw new ValidationException("There is already a shuttle assigned to the team");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Solaris.Web.CrewApi.Presentation.GraphQl.Mutations
         private const string CREATE_REQUEST_ENDPOINT = "create";
         private const string DELETE_REQUEST_ENDPOINT = "update";
         private const string UPDATE_REQUEST_ENDPOINT = "delete";
-        private const string UPDATE_CREATE_ARGUMENT_NAME = "Shuttle";
+        private const string UPDATE_CREATE_ARGUMENT_NAME = "shuttle";
         private const string DELETE_ARGUMENT_NAME = "id";
 
         public ShuttleMutations(IShuttleService service)

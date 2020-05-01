@@ -126,7 +126,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             });
 
             if (!searchResult.Any())
-                throw new ValidationException("No Planet was found for the specified Id");
+                throw new ValidationException("No Explorer team was found for the specified Id");
         }
     }
 }
