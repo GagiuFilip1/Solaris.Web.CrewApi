@@ -39,8 +39,18 @@
             <e p="OrderedRequestType.cs" t="Include" />
             <e p="PagedRequestType.cs" t="Include" />
           </e>
-          <e p="InputObjects" t="Include" />
-          <e p="OutputObjects" t="Include" />
+          <e p="InputObjects" t="Include">
+            <e p="Captain" t="Include" />
+            <e p="ExplorersTeam" t="Include" />
+            <e p="Robot" t="Include" />
+            <e p="Shuttle" t="Include" />
+          </e>
+          <e p="OutputObjects" t="Include">
+            <e p="Captain" t="Include" />
+            <e p="ExplorersTeam" t="Include" />
+            <e p="Robot" t="Include" />
+            <e p="Shuttle" t="Include" />
+          </e>
           <e p="Root" t="Include">
             <e p="RootMutation.cs" t="Include" />
             <e p="RootQuery.cs" t="Include" />
@@ -86,6 +96,7 @@
         <e p="Services" t="Include">
           <e p="Interfaces" t="Include">
             <e p="ICaptainService.cs" t="Include" />
+            <e p="ICrewMemberService.cs" t="Include" />
             <e p="IExplorersTeamService.cs" t="Include" />
             <e p="IRobotService.cs" t="Include" />
             <e p="IShuttleService.cs" t="Include" />
@@ -100,6 +111,7 @@
         </e>
         <e p="Filters" t="Include">
           <e p="CaptainFilter.cs" t="Include" />
+          <e p="CrewMemberFilter.cs" t="Include" />
           <e p="ExplorersTeamFilter.cs" t="Include" />
           <e p="RobotFilter.cs" t="Include" />
           <e p="ShuttleFilter.cs" t="Include" />
@@ -128,6 +140,7 @@
         <e p="Services" t="Include">
           <e p="Implementations" t="Include">
             <e p="CaptainService.cs" t="Include" />
+            <e p="CrewMemberService.cs" t="Include" />
             <e p="ExplorersTeamService.cs" t="Include" />
             <e p="RobotService.cs" t="Include" />
             <e p="ShuttleService.cs" t="Include" />
@@ -179,12 +192,14 @@
         </e>
         <e p="RepositoryTests" t="Include">
           <e p="CaptainRepositoryTests.cs" t="Include" />
+          <e p="CrewMemberRepositoryTests.cs" t="Include" />
           <e p="ExplorersTeamRepositoryTests.cs" t="Include" />
           <e p="RobotRepositoryTests.cs" t="Include" />
           <e p="ShuttleRepositoryTests.cs" t="Include" />
         </e>
         <e p="ServicesTests" t="Include">
           <e p="CaptainServiceTests.cs" t="Include" />
+          <e p="CrewMemberServiceTests.cs" t="Include" />
           <e p="ExplorersTeamServiceTest.cs" t="Include" />
           <e p="RobotServiceTests.cs" t="Include" />
           <e p="ShuttleServiceTests.cs" t="Include" />

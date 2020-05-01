@@ -32,6 +32,7 @@ namespace Solaris.Web.CrewApi.Tests.RepositoryTests
             Assert.Equal(3, count);
             Assert.Equal(DatabaseSeed.RobotFirstTeam1Id, robots.First(t => t.Id.Equals(DatabaseSeed.RobotFirstTeam1Id)).Id);
             Assert.Equal(DatabaseSeed.RobotFirstTeam2Id, robots.First(t => t.Id.Equals(DatabaseSeed.RobotFirstTeam2Id)).Id);
+            Assert.Equal(DatabaseSeed.RobotSecondTeam1Id, robots.First(t => t.Id.Equals(DatabaseSeed.RobotSecondTeam1Id)).Id);
         }
 
         [Fact]

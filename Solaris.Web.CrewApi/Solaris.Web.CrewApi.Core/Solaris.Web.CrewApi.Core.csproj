@@ -5,9 +5,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="GraphQl\InputObjects" />
-      <Folder Include="GraphQl\OutputObjects" />
-      <Folder Include="Services\Interfaces" />
+      <Folder Include="GraphQl\InputObjects\Captain" />
+      <Folder Include="GraphQl\InputObjects\ExplorersTeam" />
+      <Folder Include="GraphQl\InputObjects\Robot" />
+      <Folder Include="GraphQl\InputObjects\Shuttle" />
+      <Folder Include="GraphQl\OutputObjects\Captain" />
+      <Folder Include="GraphQl\OutputObjects\ExplorersTeam" />
+      <Folder Include="GraphQl\OutputObjects\Robot" />
+      <Folder Include="GraphQl\OutputObjects\Shuttle" />
     </ItemGroup>
 
     <ItemGroup>

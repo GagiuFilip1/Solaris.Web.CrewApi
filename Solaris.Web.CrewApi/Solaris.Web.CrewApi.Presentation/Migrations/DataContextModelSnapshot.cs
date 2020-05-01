@@ -2,8 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Infrastructure.Data;
 
 namespace Solaris.Web.CrewApi.Presentation.Migrations
