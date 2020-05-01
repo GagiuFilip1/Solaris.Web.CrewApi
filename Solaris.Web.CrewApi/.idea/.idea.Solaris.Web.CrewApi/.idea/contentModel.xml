@@ -44,7 +44,10 @@
               <e p="CaptainCreateViewModel.cs" t="Include" />
               <e p="CaptainUpdateViewModel.cs" t="Include" />
             </e>
-            <e p="ExplorersTeam" t="Include" />
+            <e p="ExplorersTeam" t="Include">
+              <e p="ExplorersTeamCreateViewModel.cs" t="Include" />
+              <e p="ExplorersTeamUpdateViewModel.cs" t="Include" />
+            </e>
             <e p="Robot" t="Include">
               <e p="RobotCreateViewModel.cs" t="Include" />
               <e p="RobotUpdateViewModel.cs" t="Include" />
@@ -58,7 +61,9 @@
             <e p="Captain" t="Include">
               <e p="CaptainQueryViewModel.cs" t="Include" />
             </e>
-            <e p="ExplorersTeam" t="Include" />
+            <e p="ExplorersTeam" t="Include">
+              <e p="ExplorersTeamQueryViewModel.cs" t="Include" />
+            </e>
             <e p="Robot" t="Include">
               <e p="RobotQueryViewModel.cs" t="Include" />
             </e>
