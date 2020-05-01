@@ -8,34 +8,34 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Shuttles_ExplorersTeams_ExploreresTeamId",
-                table: "Shuttles");
+                "FK_Shuttles_ExplorersTeams_ExploreresTeamId",
+                "Shuttles");
 
             migrationBuilder.DropIndex(
-                name: "IX_Shuttles_ExploreresTeamId",
-                table: "Shuttles");
+                "IX_Shuttles_ExploreresTeamId",
+                "Shuttles");
 
             migrationBuilder.DropColumn(
-                name: "ExploreresTeamId",
-                table: "Shuttles");
+                "ExploreresTeamId",
+                "Shuttles");
 
             migrationBuilder.AddColumn<Guid>(
-                name: "ExplorersTeamId",
-                table: "Shuttles",
+                "ExplorersTeamId",
+                "Shuttles",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shuttles_ExplorersTeamId",
-                table: "Shuttles",
-                column: "ExplorersTeamId",
+                "IX_Shuttles_ExplorersTeamId",
+                "Shuttles",
+                "ExplorersTeamId",
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Shuttles_ExplorersTeams_ExplorersTeamId",
-                table: "Shuttles",
-                column: "ExplorersTeamId",
-                principalTable: "ExplorersTeams",
+                "FK_Shuttles_ExplorersTeams_ExplorersTeamId",
+                "Shuttles",
+                "ExplorersTeamId",
+                "ExplorersTeams",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -43,35 +43,35 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Shuttles_ExplorersTeams_ExplorersTeamId",
-                table: "Shuttles");
+                "FK_Shuttles_ExplorersTeams_ExplorersTeamId",
+                "Shuttles");
 
             migrationBuilder.DropIndex(
-                name: "IX_Shuttles_ExplorersTeamId",
-                table: "Shuttles");
+                "IX_Shuttles_ExplorersTeamId",
+                "Shuttles");
 
             migrationBuilder.DropColumn(
-                name: "ExplorersTeamId",
-                table: "Shuttles");
+                "ExplorersTeamId",
+                "Shuttles");
 
             migrationBuilder.AddColumn<Guid>(
-                name: "ExploreresTeamId",
-                table: "Shuttles",
-                type: "char(36)",
+                "ExploreresTeamId",
+                "Shuttles",
+                "char(36)",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shuttles_ExploreresTeamId",
-                table: "Shuttles",
-                column: "ExploreresTeamId",
+                "IX_Shuttles_ExploreresTeamId",
+                "Shuttles",
+                "ExploreresTeamId",
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Shuttles_ExplorersTeams_ExploreresTeamId",
-                table: "Shuttles",
-                column: "ExploreresTeamId",
-                principalTable: "ExplorersTeams",
+                "FK_Shuttles_ExplorersTeams_ExploreresTeamId",
+                "Shuttles",
+                "ExploreresTeamId",
+                "ExplorersTeams",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

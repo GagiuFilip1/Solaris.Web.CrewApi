@@ -52,7 +52,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Ioc
                 return;
 
             var typesToRegister = assembly.GetTypes()
-                .Where(x => x.Namespace != null && x.Namespace.Contains(nameSpace, StringComparison.InvariantCultureIgnoreCase) && x.GetInterfaces().Any())
+                .Where(x => x.Namespace != null && x.Namespace.Contains(nameSpace, StringComparison.InvariantCultureIgnoreCase))
                 .ToList();
             typesToRegister.ForEach(RegisterType);
         }
@@ -97,18 +97,17 @@ namespace Solaris.Web.CrewApi.Infrastructure.Ioc
             collection.AddGraphQL(opt => { opt.ExposeExceptions = true; })
                 .AddGraphTypes(ServiceLifetime.Scoped)
                 .AddDataLoader();
-     
-            
+
+
             ValueConverter.Register(
                 typeof(double),
                 typeof(float),
                 value => Convert.ToSingle(value, NumberFormatInfo.InvariantInfo));
-            
+
             ValueConverter.Register(
                 typeof(float),
                 typeof(double),
                 value => Convert.ToDouble(value, NumberFormatInfo.InvariantInfo));
-
         }
 
 
@@ -117,7 +116,8 @@ namespace Solaris.Web.CrewApi.Infrastructure.Ioc
             var registrationType = typeToRegister.GetCustomAttribute<RegistrationKindAttribute>();
             if (registrationType == null)
             {
-                Services.AddScoped(typeToRegister.GetInterfaces().First(), typeToRegister);
+                if (typeToRegister.GetInterfaces().Any())
+                    Services.AddScoped(typeToRegister.GetInterfaces().First(), typeToRegister);
                 return;
             }
 

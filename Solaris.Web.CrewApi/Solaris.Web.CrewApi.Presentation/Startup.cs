@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Solaris.Web.CrewApi.Core.Models.Helpers;
 using Solaris.Web.CrewApi.Infrastructure.Data;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
@@ -18,7 +19,7 @@ namespace Solaris.Web.CrewApi.Presentation
         private const string MIGRATION_ASSEMBLY = "Solaris.Web.CrewApi.Presentation";
         private const string REPOSITORIES_NAMESPACE = "Solaris.Web.CrewApi.Infrastructure.Repositories.Implementations";
         private const string SERVICES_NAMESPACE = "Solaris.Web.CrewApi.Infrastructure.Services.Implementations";
-
+        private const string RABBIT_NAMESPACE = "Solaris.Web.CrewApi.Infrastructure.Rabbit";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,18 +27,13 @@ namespace Solaris.Web.CrewApi.Presentation
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<KestrelServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
-
-            services.Configure<IISServerOptions>(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
+            services.Configure<KestrelServerOptions>(options => { options.AllowSynchronousIO = true; });
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<IISServerOptions>(options => { options.AllowSynchronousIO = true; });
             services.InjectMySqlDbContext<DataContext>(Configuration[CONNECTION_STRING_PATH], MIGRATION_ASSEMBLY);
             services.InjectForNamespace(REPOSITORIES_NAMESPACE);
             services.InjectForNamespace(SERVICES_NAMESPACE);
+            services.InjectForNamespace(RABBIT_NAMESPACE);
             services.InjectGraphQl();
         }
 
