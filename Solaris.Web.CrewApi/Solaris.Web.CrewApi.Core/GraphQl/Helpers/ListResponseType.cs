@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using GraphQL.Types;
-using Solaris.Web.CrewApi.Core.GraphQl.InputObjects.Captain;
 using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.Captain;
 using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.CrewMember;
 using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.ExplorersTeam;
