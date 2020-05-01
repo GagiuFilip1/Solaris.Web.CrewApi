@@ -38,7 +38,7 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
                 .ReturnsAsync(new Tuple<int, List<CrewMember>>(1, new List<CrewMember> {captain}));
 
             //Act
-            var (count, captains) = await m_captainService.SearchCaptainAsync(new Pagination(), new Ordering(), new CrewMemberFilter
+            var (count, captains) = await m_captainService.SearchCrewMemberAsync(new Pagination(), new Ordering(), new CrewMemberFilter
             {
                 SearchTerm = captain.Id.ToString()
             });

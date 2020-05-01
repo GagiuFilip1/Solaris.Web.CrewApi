@@ -1,5 +1,11 @@
 using System.Collections.Generic;
 using GraphQL.Types;
+using Solaris.Web.CrewApi.Core.GraphQl.InputObjects.Captain;
+using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.Captain;
+using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.CrewMember;
+using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.ExplorersTeam;
+using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.Robot;
+using Solaris.Web.CrewApi.Core.GraphQl.OutputObjects.Shuttle;
 
 namespace Solaris.Web.CrewApi.Core.GraphQl.Helpers
 {
@@ -18,5 +24,25 @@ namespace Solaris.Web.CrewApi.Core.GraphQl.Helpers
     {
         public long TotalCount { get; set; }
         public IList<T> Items { get; set; }
+    }
+    
+    public class ListCaptainsQueryModelType : ListResponseType<CaptainQueryViewModel>
+    {
+    }
+    
+    public class ListRobotsQueryModelType : ListResponseType<RobotQueryViewModel>
+    {
+    }
+    
+    public class ListShuttlesQueryModelType : ListResponseType<ShuttleQueryViewModel>
+    {
+    }
+    
+    public class ListExplorersTeamsQueryModelType : ListResponseType<ExplorersTeamQueryViewModel>
+    {
+    }
+    
+    public class ListCrewMembersQueryModelType : ListResponseType<CrewMemberQueryViewModel>
+    {
     }
 }

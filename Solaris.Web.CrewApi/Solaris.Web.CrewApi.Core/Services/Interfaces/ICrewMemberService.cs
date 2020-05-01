@@ -9,7 +9,7 @@ namespace Solaris.Web.CrewApi.Core.Services.Interfaces
 {
     public interface ICrewMemberService
     {
-        Task<Tuple<int, List<CrewMember>>> SearchCaptainAsync(Pagination pagination, Ordering ordering, IFilter<CrewMember> filtering);
+        Task<Tuple<int, List<CrewMember>>> SearchCrewMemberAsync(Pagination pagination, Ordering ordering, IFilter<CrewMember> filtering);
         Task<int> SimpleCountAsync(IFilter<CrewMember> filter);
     }
 }

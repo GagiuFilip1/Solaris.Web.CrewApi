@@ -21,7 +21,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             m_crewMemberRepository = crewMemberRepository;
         }
 
-        public async Task<Tuple<int, List<CrewMember>>> SearchCaptainAsync(Pagination pagination, Ordering ordering, IFilter<CrewMember> filtering)
+        public async Task<Tuple<int, List<CrewMember>>> SearchCrewMemberAsync(Pagination pagination, Ordering ordering, IFilter<CrewMember> filtering)
         {
             try
             {

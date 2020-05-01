@@ -184,7 +184,7 @@
           <e p="Queries" t="Include">
             <e p="CaptainQueries.cs" t="Include" />
             <e p="CrewMemberQueries.cs" t="Include" />
-            <e p="ExplorersTeamMutations.cs" t="Include" />
+            <e p="ExplorersTeamQueries.cs" t="Include" />
             <e p="RobotQueries.cs" t="Include" />
             <e p="ShuttleQueries.cs" t="Include" />
           </e>
