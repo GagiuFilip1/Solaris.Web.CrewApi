@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Infrastructure.Data;
@@ -9,9 +10,10 @@ using Solaris.Web.CrewApi.Infrastructure.Data;
 namespace Solaris.Web.CrewApi.Presentation.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200501001155_FixColumnNames")]
+    partial class FixColumnNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,11 +100,11 @@ namespace Solaris.Web.CrewApi.Presentation.Migrations
                 {
                     b.HasBaseType("Solaris.Web.CrewApi.Core.Models.Entities.CrewMember");
 
-                    b.Property<sbyte>("Age")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("longtext CHARACTER SET latin1");
 
                     b.Property<byte>("Gender")
                         .HasColumnType("tinyint unsigned");

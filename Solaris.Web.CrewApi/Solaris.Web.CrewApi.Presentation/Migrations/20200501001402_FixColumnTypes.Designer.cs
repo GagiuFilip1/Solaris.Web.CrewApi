@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Infrastructure.Data;
@@ -9,9 +10,10 @@ using Solaris.Web.CrewApi.Infrastructure.Data;
 namespace Solaris.Web.CrewApi.Presentation.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200501001402_FixColumnTypes")]
+    partial class FixColumnTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

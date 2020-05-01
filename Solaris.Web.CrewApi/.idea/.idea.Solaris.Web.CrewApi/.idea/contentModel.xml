@@ -146,6 +146,10 @@
         <e p="Migrations" t="Include">
           <e p="20200430184733_AddMainModels.cs" t="Include" />
           <e p="20200430184733_AddMainModels.Designer.cs" t="Include" />
+          <e p="20200501001155_FixColumnNames.cs" t="Include" />
+          <e p="20200501001155_FixColumnNames.Designer.cs" t="Include" />
+          <e p="20200501001402_FixColumnTypes.cs" t="Include" />
+          <e p="20200501001402_FixColumnTypes.Designer.cs" t="Include" />
           <e p="DataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="NLog.config" t="Include" />
