@@ -61,6 +61,9 @@
             <e p="Captain" t="Include">
               <e p="CaptainQueryViewModel.cs" t="Include" />
             </e>
+            <e p="CrewMember" t="Include">
+              <e p="CrewMemberQueryViewModel.cs" t="Include" />
+            </e>
             <e p="ExplorersTeam" t="Include">
               <e p="ExplorersTeamQueryViewModel.cs" t="Include" />
             </e>
@@ -172,9 +175,26 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GraphQl" t="Include">
-          <e p="Mutations" t="Include" />
-          <e p="Queries" t="Include" />
-          <e p="Schemas" t="Include" />
+          <e p="Mutations" t="Include">
+            <e p="CaptainMutations.cs" t="Include" />
+            <e p="ExplorersTeamMutations.cs" t="Include" />
+            <e p="RobotMutations.cs" t="Include" />
+            <e p="ShuttleMutations.cs" t="Include" />
+          </e>
+          <e p="Queries" t="Include">
+            <e p="CaptainQueries.cs" t="Include" />
+            <e p="CrewMemberQueries.cs" t="Include" />
+            <e p="ExplorersTeamMutations.cs" t="Include" />
+            <e p="RobotQueries.cs" t="Include" />
+            <e p="ShuttleQueries.cs" t="Include" />
+          </e>
+          <e p="Schemas" t="Include">
+            <e p="CaptainSchema.cs" t="Include" />
+            <e p="CrewMemberSchema.cs" t="Include" />
+            <e p="ExplorersTeamSchema.cs" t="Include" />
+            <e p="RobotSchema.cs" t="Include" />
+            <e p="ShuttleSchema.cs" t="Include" />
+          </e>
         </e>
         <e p="Migrations" t="Include">
           <e p="20200430184733_AddMainModels.cs" t="Include" />

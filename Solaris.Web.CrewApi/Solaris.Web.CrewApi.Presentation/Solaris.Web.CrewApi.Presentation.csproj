@@ -20,10 +20,4 @@
       <ProjectReference Include="..\Solaris.Web.CrewApi.Infrastructure\Solaris.Web.CrewApi.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="GraphQl\Mutations" />
-      <Folder Include="GraphQl\Queries" />
-      <Folder Include="GraphQl\Schemas" />
-    </ItemGroup>
-
 </Project>
