@@ -40,13 +40,18 @@
             <e p="PagedRequestType.cs" t="Include" />
           </e>
           <e p="InputObjects" t="Include">
-            <e p="Captain" t="Include" />
+            <e p="Captain" t="Include">
+              <e p="CaptainCreateViewModel.cs" t="Include" />
+              <e p="CaptainUpdateViewModel.cs" t="Include" />
+            </e>
             <e p="ExplorersTeam" t="Include" />
             <e p="Robot" t="Include" />
             <e p="Shuttle" t="Include" />
           </e>
           <e p="OutputObjects" t="Include">
-            <e p="Captain" t="Include" />
+            <e p="Captain" t="Include">
+              <e p="CaptainQueryViewModel.cs" t="Include" />
+            </e>
             <e p="ExplorersTeam" t="Include" />
             <e p="Robot" t="Include" />
             <e p="Shuttle" t="Include" />
