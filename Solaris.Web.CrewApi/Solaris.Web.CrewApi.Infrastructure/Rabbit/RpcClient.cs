@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using Solaris.Web.CrewApi.Core.Models.Helpers;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
@@ -32,19 +33,16 @@ namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
 
         public T PublishRpc<T>(RpcOptions options)
         {
-            using (var rpcData = new RpcData(Factory, options.Headers))
-            {
-                rpcData.Channel.BasicPublish(
-                    "",
-                    options.TargetQueue,
-                    rpcData.BasicProperties,
-                    Encoding.UTF8.GetBytes(options.Message));
+            using var rpcData = new RpcData(Factory, options.Headers);
+            rpcData.Channel.BasicPublish(
+                "",
+                options.TargetQueue,
+                rpcData.BasicProperties,
+                Encoding.UTF8.GetBytes(options.Message));
 
-                rpcData.Channel.BasicConsume(rpcData.Consumer, rpcData.ReplyQueueName, true);
-                var received = rpcData.ResponseQueue.Take();
-            }
-
-            return default;
+            rpcData.Channel.BasicConsume(rpcData.Consumer, rpcData.ReplyQueueName, true);
+            var received = rpcData.ResponseQueue.Take();
+            return JsonConvert.DeserializeObject<T>(received);
         }
     }
 }
