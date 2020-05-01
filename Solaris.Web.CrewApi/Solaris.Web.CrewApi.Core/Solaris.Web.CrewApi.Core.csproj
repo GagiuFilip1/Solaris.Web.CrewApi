@@ -6,9 +6,7 @@
 
     <ItemGroup>
       <Folder Include="GraphQl\InputObjects\ExplorersTeam" />
-      <Folder Include="GraphQl\InputObjects\Shuttle" />
       <Folder Include="GraphQl\OutputObjects\ExplorersTeam" />
-      <Folder Include="GraphQl\OutputObjects\Shuttle" />
     </ItemGroup>
 
     <ItemGroup>
