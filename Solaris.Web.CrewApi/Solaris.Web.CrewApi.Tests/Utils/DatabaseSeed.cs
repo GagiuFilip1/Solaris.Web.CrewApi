@@ -98,7 +98,7 @@ namespace Solaris.Web.CrewApi.Tests.Utils
                     CreationDate = DateTime.Now.AddYears(90),
                     CurrentStatus = RobotStatus.Free,
                     ExplorersTeamId = ExplorersTeam1Id,
-                    ProductNumber = "AB-1000",
+                    ProductNumber = "1234",
                     Name = "SpareParty"
                 },
                 new Robot
@@ -107,7 +107,7 @@ namespace Solaris.Web.CrewApi.Tests.Utils
                     CreationDate = DateTime.Now.AddYears(90),
                     CurrentStatus = RobotStatus.Free,
                     ExplorersTeamId = ExplorersTeam1Id,
-                    ProductNumber = "AB-1000",
+                    ProductNumber = "1234",
                     Name = "ProductionHotFix"
                 },
                 new Robot
@@ -116,7 +116,7 @@ namespace Solaris.Web.CrewApi.Tests.Utils
                     CreationDate = DateTime.Now.AddYears(100),
                     CurrentStatus = RobotStatus.Free,
                     ExplorersTeamId = ExplorersTeam1Id,
-                    ProductNumber = "AB-2000",
+                    ProductNumber = "1234",
                     Name = "WhoNeedUnitTests"
                 }
             };

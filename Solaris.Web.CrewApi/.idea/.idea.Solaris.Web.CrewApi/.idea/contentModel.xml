@@ -126,7 +126,12 @@
           </e>
         </e>
         <e p="Services" t="Include">
-          <e p="Implementations" t="Include" />
+          <e p="Implementations" t="Include">
+            <e p="CaptainService.cs" t="Include" />
+            <e p="ExplorersTeamService.cs" t="Include" />
+            <e p="RobotService.cs" t="Include" />
+            <e p="ShuttleService.cs" t="Include" />
+          </e>
         </e>
         <e p="Solaris.Web.CrewApi.Infrastructure.csproj" t="IncludeRecursive" />
       </e>
@@ -174,7 +179,12 @@
           <e p="RobotRepositoryTests.cs" t="Include" />
           <e p="ShuttleRepositoryTests.cs" t="Include" />
         </e>
-        <e p="ServicesTests" t="Include" />
+        <e p="ServicesTests" t="Include">
+          <e p="CaptainServiceTests.cs" t="Include" />
+          <e p="ExplorersTeamServiceTest.cs" t="Include" />
+          <e p="RobotServiceTests.cs" t="Include" />
+          <e p="ShuttleServiceTests.cs" t="Include" />
+        </e>
         <e p="Solaris.Web.CrewApi.Tests.csproj" t="IncludeRecursive" />
         <e p="Utils" t="Include">
           <e p="DatabaseFixture.cs" t="Include" />
