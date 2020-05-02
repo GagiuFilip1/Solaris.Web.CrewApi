@@ -4,14 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Entities;
 using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit;
 using Solaris.Web.CrewApi.Core.Models.Interfaces;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
+using Solaris.Web.CrewApi.Infrastructure.Rabbit;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
 {
@@ -21,12 +25,16 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
         private readonly ILogger<RobotService> m_logger;
         private readonly IRobotRepository m_repository;
         private readonly IExplorersTeamRepository m_explorersTeamRepository;
+        private readonly AppSettings m_appSettings;
+        private readonly RpcClient m_client;
 
-        public RobotService(ILogger<RobotService> logger, IRobotRepository repository, IExplorersTeamRepository explorersTeamRepository)
+        public RobotService(ILogger<RobotService> logger, IRobotRepository repository, IExplorersTeamRepository explorersTeamRepository, RpcClient client, IOptions<AppSettings> appSettings)
         {
             m_logger = logger;
             m_repository = repository;
             m_explorersTeamRepository = explorersTeamRepository;
+            m_client = client;
+            m_appSettings = appSettings.Value;
         }
 
         public async Task CreateRobotAsync(Robot robot)
@@ -37,6 +45,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                 if (validationError.Any())
                     throw new ValidationException($"A validation exception was raised while trying to create a Robot : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
                 await CheckExplorersTeamExistAsync(robot.ExplorersTeamId);
+                CheckIfPlanetExist(robot.CurrentPlanetId);
                 await m_repository.CreateAsync(robot);
             }
             catch (ValidationException e)
@@ -59,6 +68,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                 if (validationError.Any())
                     throw new ValidationException($"A validation exception was raised while trying to update a Robot : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
                 await EnsureRobotExistAsync(robot.Id);
+                CheckIfPlanetExist(robot.CurrentPlanetId);
                 await CheckExplorersTeamExistAsync(robot.ExplorersTeamId);
                 await m_repository.UpdateAsync(robot);
             }
@@ -116,6 +126,25 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             if (!searchResult.Any())
                 throw new ValidationException("No Robot was found for the specified Id");
             return searchResult.First();
+        }
+
+        private void CheckIfPlanetExist(Guid? planetId)
+        {
+            if(!planetId.HasValue)
+                return;
+            
+            var response = m_client.PublishRpc<RabbitResponse>(new RpcOptions
+            {
+                TargetQueue = m_appSettings.RabbitMqQueues.SolarApiQueue,
+                Message = planetId.ToString(),
+                Headers = new Dictionary<string, object>
+                {
+                    {nameof(MessageType), nameof(MessageType.CheckPlanet)}
+                }
+            });
+
+            if (!response.IsSuccessful)
+                throw new ValidationException("The Planet with he specified Id Does not exist");
         }
 
         private async Task CheckExplorersTeamExistAsync(Guid id)

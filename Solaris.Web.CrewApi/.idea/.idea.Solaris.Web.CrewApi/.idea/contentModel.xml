@@ -90,9 +90,14 @@
             <e p="Shuttle.cs" t="Include" />
           </e>
           <e p="Helpers" t="Include">
-            <e p="Appsettings.cs" t="Include" />
-            <e p="Ordering.cs" t="Include" />
-            <e p="Pagination.cs" t="Include" />
+            <e p="Commons" t="Include">
+              <e p="Appsettings.cs" t="Include" />
+              <e p="Ordering.cs" t="Include" />
+              <e p="Pagination.cs" t="Include" />
+            </e>
+            <e p="Rabbit" t="Include">
+              <e p="RabbitResponse.cs" t="Include" />
+            </e>
             <e p="RabbitMqQueues.cs" t="Include" />
             <e p="RabbitMqSettings.cs" t="Include" />
           </e>

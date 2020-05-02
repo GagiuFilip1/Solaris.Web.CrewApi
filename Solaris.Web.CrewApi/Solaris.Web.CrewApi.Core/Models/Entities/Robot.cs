@@ -13,7 +13,7 @@ namespace Solaris.Web.CrewApi.Core.Models.Entities
 
         public DateTime CreationDate { get; set; }
 
-        public Guid CurrentPlanetId { get; set; }
+        public Guid? CurrentPlanetId { get; set; }
 
         public RobotStatus CurrentStatus { get; set; }
 

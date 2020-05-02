@@ -42,6 +42,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
 
             rpcData.Channel.BasicConsume(rpcData.Consumer, rpcData.ReplyQueueName, true);
             var received = rpcData.ResponseQueue.Take();
+            
             return JsonConvert.DeserializeObject<T>(received);
         }
     }

@@ -20,7 +20,7 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
         {
             m_repositoryMock = new Mock<IRobotRepository>();
             m_explorersTeamRepositoryMock = new Mock<IExplorersTeamRepository>();
-            m_robotService = new RobotService(new Mock<ILogger<RobotService>>().Object, m_repositoryMock.Object, m_explorersTeamRepositoryMock.Object);
+            m_robotService = new RobotService(new Mock<ILogger<RobotService>>().Object, m_repositoryMock.Object, m_explorersTeamRepositoryMock.Object, null, null);
         }
 
         private readonly Mock<IRobotRepository> m_repositoryMock;

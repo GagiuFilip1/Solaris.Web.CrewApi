@@ -57,6 +57,12 @@ namespace Solaris.Web.CrewApi.Infrastructure.Ioc
             typesToRegister.ForEach(RegisterType);
         }
 
+        public static void InjectRabbitMq(this IServiceCollection _)
+        {
+            var assembly = Assembly.Load("Solaris.Web.SolarApi.Infrastructure");
+            assembly.GetTypesForPath("Solaris.Web.CrewApi.Infrastructure.Rabbit").Select(t => t.UnderlyingSystemType).ToList().ForEach(RegisterType);
+        }
+        
         public static void InjectGraphQl(this IServiceCollection collection)
         {
             InjectForNamespace(collection, "Solaris.Web.CrewApi.Presentation.GraphQl.Schemas");
@@ -142,7 +148,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Ioc
                         Services.AddTransient(typeToRegister.GetInterfaces().First(), typeToRegister);
                     break;
                 default:
-                    Services.AddSingleton(typeToRegister.GetInterfaces().First(), typeToRegister);
+                    Services.AddScoped(typeToRegister.GetInterfaces().First(), typeToRegister);
                     break;
             }
         }
