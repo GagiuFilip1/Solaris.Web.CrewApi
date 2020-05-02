@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Infrastructure.Data;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 

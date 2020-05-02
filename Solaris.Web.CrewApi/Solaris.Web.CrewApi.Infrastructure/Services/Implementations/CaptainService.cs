@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
@@ -61,7 +61,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                     throw new ValidationException($"A validation exception was raised while trying to update a Captain : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
                 await EnsureCaptainExistAsync(captain.Id);
                 await CheckExplorersTeamExistAsync(captain.ExplorersTeamId);
-                await m_repository.UpdateAsync(captain);
+                await m_repository.UpdateAsync(new List<Captain>{captain});
             }
             catch (ValidationException e)
             {

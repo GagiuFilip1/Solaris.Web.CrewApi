@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
 

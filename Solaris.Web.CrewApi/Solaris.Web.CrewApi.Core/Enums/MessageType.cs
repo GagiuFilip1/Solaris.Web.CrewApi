@@ -2,6 +2,7 @@
 {
     public enum MessageType
     {
-        CheckPlanet
+        CheckPlanet,
+        SendRobotsToPlanet
     }
 }

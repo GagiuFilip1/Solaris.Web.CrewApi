@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Services.Implementations;
@@ -65,7 +66,8 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
             };
             m_explorersTeamRepositoryMock.Setup(t => t.SearchAsync(It.IsAny<Pagination>(), It.IsAny<Ordering>(), It.IsAny<ExplorersTeamFilter>()))
                 .ReturnsAsync(new Tuple<int, List<ExplorersTeam>>(1, new List<ExplorersTeam> {explorersTeam}));
-
+            m_repositoryMock.Setup(t => t.SearchAsync(It.IsAny<Pagination>(), It.IsAny<Ordering>(), It.IsAny<CaptainFilter>()))
+                .ReturnsAsync(new Tuple<int, List<Captain>>(0, new List<Captain>()));
             //Act
             var repoFailed = m_captainService.CreateCaptainAsync(new Captain
             {
@@ -91,6 +93,8 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
             };
             m_explorersTeamRepositoryMock.Setup(t => t.SearchAsync(It.IsAny<Pagination>(), It.IsAny<Ordering>(), It.IsAny<ExplorersTeamFilter>()))
                 .ReturnsAsync(new Tuple<int, List<ExplorersTeam>>(1, new List<ExplorersTeam> {explorersTeam}));
+            m_repositoryMock.Setup(t => t.SearchAsync(It.IsAny<Pagination>(), It.IsAny<Ordering>(), It.IsAny<CaptainFilter>()))
+                .ReturnsAsync(new Tuple<int, List<Captain>>(0, new List<Captain>()));
             //Act
             await m_captainService.CreateCaptainAsync(new Captain
             {
@@ -213,7 +217,7 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
             await m_captainService.UpdateCaptainAsync(captain);
 
             //Assert
-            m_repositoryMock.Verify(t => t.UpdateAsync(It.IsAny<Captain>()), Times.Once);
+            m_repositoryMock.Verify(t => t.UpdateAsync(It.IsAny<List<Captain>>()), Times.Once);
         }
     }
 }

@@ -102,7 +102,9 @@
             <e p="RabbitMqSettings.cs" t="Include" />
           </e>
           <e p="Interfaces" t="Include">
-            <e p="IFilter.cs" t="Include" />
+            <e p="Filters" t="Include">
+              <e p="IFilter.cs" t="Include" />
+            </e>
             <e p="IIdentifier.cs" t="Include" />
             <e p="IValidEntity.cs" t="Include" />
           </e>

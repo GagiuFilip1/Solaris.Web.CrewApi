@@ -1,5 +1,6 @@
 using GraphQL.Types;
 using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 
 namespace Solaris.Web.CrewApi.Core.GraphQl.Helpers
 {
@@ -10,6 +11,7 @@ namespace Solaris.Web.CrewApi.Core.GraphQl.Helpers
         public FilteredRequestType()
         {
             Field(x => x.SearchTerm, true).Description($"The search term which will be used to filter the list of {typeof(T).Name}s");
+            Field(x => x.Ids, true, typeof(ListGraphType<IdGraphType>)).Description($"A list of ids used to filter {typeof(T).Name}s");
         }
     }
 }

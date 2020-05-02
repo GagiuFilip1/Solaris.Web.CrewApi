@@ -8,9 +8,9 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
@@ -70,7 +70,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                 await EnsureRobotExistAsync(robot.Id);
                 CheckIfPlanetExist(robot.CurrentPlanetId);
                 await CheckExplorersTeamExistAsync(robot.ExplorersTeamId);
-                await m_repository.UpdateAsync(robot);
+                await m_repository.UpdateAsync(new List<Robot> {robot});
             }
             catch (ValidationException e)
             {
@@ -103,6 +103,40 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             }
         }
 
+        public async Task SendRobotsToPlanetAsync(IFilter<Robot> filter, Guid planetId)
+        {
+            try
+            {
+                var (_, searchedRobots ) = await SearchRobotAsync(new Pagination(), new Ordering(), filter);
+                var response = m_client.PublishRpc<RabbitResponse>(new RpcOptions
+                {
+                    TargetQueue = m_appSettings.RabbitMqQueues.SolarApiQueue,
+                    Message = JsonConvert.SerializeObject(searchedRobots.Select(t => t.Id)),
+                    Headers = new Dictionary<string, object>
+                    {
+                        {nameof(MessageType), nameof(MessageType.SendRobotsToPlanet)}
+                    }
+                });
+
+                if (response.IsSuccessful)
+                {
+                    var (_, bots ) = await SearchRobotAsync(new Pagination(), new Ordering(), filter);
+                    bots.ForEach(robot => robot.CurrentStatus = RobotStatus.Occupied);
+                    await m_repository.UpdateAsync(bots);
+                }
+            }
+            catch (ValidationException e)
+            {
+                m_logger.LogWarning(e, "A validation failed");
+                throw;
+            }
+            catch (Exception e) when (e.GetType() != typeof(ValidationException))
+            {
+                m_logger.LogCritical(e, "Unexpected Exception while trying to send the robots to the planet");
+                throw;
+            }
+        }
+
         public async Task<Tuple<int, List<Robot>>> SearchRobotAsync(Pagination pagination, Ordering ordering, IFilter<Robot> filter)
         {
             try
@@ -130,9 +164,9 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
 
         private void CheckIfPlanetExist(Guid? planetId)
         {
-            if(!planetId.HasValue)
+            if (!planetId.HasValue)
                 return;
-            
+
             var response = m_client.PublishRpc<RabbitResponse>(new RpcOptions
             {
                 TargetQueue = m_appSettings.RabbitMqQueues.SolarApiQueue,

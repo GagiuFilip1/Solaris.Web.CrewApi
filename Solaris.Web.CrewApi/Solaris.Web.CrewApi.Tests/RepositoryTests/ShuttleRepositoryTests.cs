@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Repositories.Implementations;
@@ -147,20 +148,20 @@ namespace Solaris.Web.CrewApi.Tests.RepositoryTests
         {
             //Arrange
             var id = Guid.NewGuid();
-            var planet = new Shuttle
+            var shuttle = new Shuttle
             {
                 Id = id,
                 Name = "Test",
             };
 
             //Act
-            await m_repository.CreateAsync(planet);
+            await m_repository.CreateAsync(shuttle);
             var (_, shuttles) = await m_repository.SearchAsync(new Pagination(), new Ordering(), new ShuttleFilter
             {
                 SearchTerm = id.ToString()
             });
-            planet.Name = "Modified";
-            await m_repository.UpdateAsync(planet);
+            shuttle.Name = "Modified";
+            await m_repository.UpdateAsync(new List<Shuttle> {shuttle});
             var (_, updatedResponse) = await m_repository.SearchAsync(new Pagination(), new Ordering(), new ShuttleFilter
             {
                 SearchTerm = id.ToString()

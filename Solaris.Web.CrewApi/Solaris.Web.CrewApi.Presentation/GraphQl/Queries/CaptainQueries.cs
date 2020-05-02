@@ -3,7 +3,7 @@ using GraphQL;
 using GraphQL.Types;
 using Solaris.Web.CrewApi.Core.GraphQl.Helpers;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;

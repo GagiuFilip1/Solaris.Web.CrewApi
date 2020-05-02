@@ -1,4 +1,4 @@
-﻿namespace Solaris.Web.CrewApi.Core.Models.Helpers
+﻿namespace Solaris.Web.CrewApi.Core.Models.Helpers.Commons
 {
     public class AppSettings
     {

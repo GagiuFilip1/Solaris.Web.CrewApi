@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
@@ -61,7 +61,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                     throw new ValidationException($"A validation exception was raised while trying to update a Shuttle : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
                 await EnsureShuttleExistAsync(shuttle.Id);
                 await CheckExplorersTeamExistAsync(shuttle.ExplorersTeamId);
-                await m_repository.UpdateAsync(shuttle);
+                await m_repository.UpdateAsync(new List<Shuttle> {shuttle});
             }
             catch (ValidationException e)
             {
@@ -136,7 +136,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             {
                 SearchTerm = explorersTeamId.ToString()
             });
-            if(count > 0)
+            if (count > 0)
                 throw new ValidationException("There is already a shuttle assigned to the team");
         }
     }

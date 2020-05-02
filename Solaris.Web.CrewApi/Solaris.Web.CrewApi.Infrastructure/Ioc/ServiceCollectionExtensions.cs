@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Storage;
 using Solaris.Web.CrewApi.Core.Extensions;
 using Solaris.Web.CrewApi.Core.GraphQl.Root;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Ioc
 {

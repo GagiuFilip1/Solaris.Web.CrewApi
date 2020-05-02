@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Moq;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
+using Solaris.Web.CrewApi.Infrastructure.Rabbit;
 using Solaris.Web.CrewApi.Infrastructure.Services.Implementations;
 using Xunit;
 
@@ -18,9 +21,12 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
     {
         public RobotServiceTests()
         {
+            var client = new Mock<RpcClient>();
+            var settings = new Mock<IOptions<AppSettings>>();
+          
             m_repositoryMock = new Mock<IRobotRepository>();
             m_explorersTeamRepositoryMock = new Mock<IExplorersTeamRepository>();
-            m_robotService = new RobotService(new Mock<ILogger<RobotService>>().Object, m_repositoryMock.Object, m_explorersTeamRepositoryMock.Object, null, null);
+            m_robotService = new RobotService(new Mock<ILogger<RobotService>>().Object, m_repositoryMock.Object, m_explorersTeamRepositoryMock.Object, client.Object, settings.Object);
         }
 
         private readonly Mock<IRobotRepository> m_repositoryMock;
@@ -210,7 +216,7 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
             await m_robotService.UpdateRobotAsync(robot);
 
             //Assert
-            m_repositoryMock.Verify(t => t.UpdateAsync(It.IsAny<Robot>()), Times.Once);
+            m_repositoryMock.Verify(t => t.UpdateAsync(It.IsAny<List<Robot>>()), Times.Once);
         }
     }
 }

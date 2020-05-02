@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
@@ -14,6 +13,10 @@ namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
         private readonly AppSettings m_appSettings;
         private ConnectionFactory Factory { get; set; }
 
+        public RpcClient()
+        {
+            
+        }
         public RpcClient(IOptions<AppSettings> appSettings)
         {
             m_appSettings = appSettings.Value;

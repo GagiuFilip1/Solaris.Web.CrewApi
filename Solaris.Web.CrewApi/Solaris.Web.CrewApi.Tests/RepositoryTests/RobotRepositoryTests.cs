@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Repositories.Implementations;
@@ -12,7 +13,7 @@ using Xunit;
 
 namespace Solaris.Web.CrewApi.Tests.RepositoryTests
 {
-     public class RobotRepositoryTests : IClassFixture<DatabaseFixture>
+    public class RobotRepositoryTests : IClassFixture<DatabaseFixture>
     {
         private readonly DatabaseFixture m_databaseFixture;
         private readonly IRobotRepository m_repository;
@@ -148,20 +149,20 @@ namespace Solaris.Web.CrewApi.Tests.RepositoryTests
         {
             //Arrange
             var id = Guid.NewGuid();
-            var planet = new Robot
+            var robot = new Robot
             {
                 Id = id,
                 Name = "Test",
             };
 
             //Act
-            await m_repository.CreateAsync(planet);
+            await m_repository.CreateAsync(robot);
             var (_, robots) = await m_repository.SearchAsync(new Pagination(), new Ordering(), new RobotFilter
             {
                 SearchTerm = id.ToString()
             });
-            planet.Name = "Modified";
-            await m_repository.UpdateAsync(planet);
+            robot.Name = "Modified";
+            await m_repository.UpdateAsync(new List<Robot> {robot});
             var (_, updatedResponse) = await m_repository.SearchAsync(new Pagination(), new Ordering(), new RobotFilter
             {
                 SearchTerm = id.ToString()

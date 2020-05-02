@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Solaris.Web.CrewApi.Core.Extensions;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Helpers;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Data;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
@@ -27,9 +27,9 @@ namespace Solaris.Web.CrewApi.Infrastructure.Repositories.Implementations
             await m_dataContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Captain entity)
+        public async Task UpdateAsync(List<Captain> entities)
         {
-            m_dataContext.Captains.Update(entity);
+            m_dataContext.Captains.UpdateRange(entities);
             await m_dataContext.SaveChangesAsync();
         }
 
