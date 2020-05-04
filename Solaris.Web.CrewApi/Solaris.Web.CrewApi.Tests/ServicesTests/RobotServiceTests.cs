@@ -7,7 +7,6 @@ using Microsoft.Extensions.Options;
 using Moq;
 using Solaris.Web.CrewApi.Core.Models.Entities;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit;
 using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Filters;
@@ -21,7 +20,7 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
     {
         public RobotServiceTests()
         {
-            var client = new Mock<RpcClient>();
+            var client = new Mock<RabbitHandler>();
             var settings = new Mock<IOptions<AppSettings>>();
           
             m_repositoryMock = new Mock<IRobotRepository>();

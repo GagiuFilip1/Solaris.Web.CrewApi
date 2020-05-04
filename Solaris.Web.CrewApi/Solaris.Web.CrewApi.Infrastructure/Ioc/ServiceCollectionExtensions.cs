@@ -14,6 +14,7 @@ using Pomelo.EntityFrameworkCore.MySql.Storage;
 using Solaris.Web.CrewApi.Core.Extensions;
 using Solaris.Web.CrewApi.Core.GraphQl.Root;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Infrastructure.Rabbit;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Ioc
 {
@@ -57,10 +58,11 @@ namespace Solaris.Web.CrewApi.Infrastructure.Ioc
             typesToRegister.ForEach(RegisterType);
         }
 
-        public static void InjectRabbitMq(this IServiceCollection _)
+        public static void InjectRabbitMq(this IServiceCollection collection)
         {
-            var assembly = Assembly.Load("Solaris.Web.SolarApi.Infrastructure");
+            var assembly = Assembly.Load("Solaris.Web.CrewApi.Infrastructure");
             assembly.GetTypesForPath("Solaris.Web.CrewApi.Infrastructure.Rabbit").Select(t => t.UnderlyingSystemType).ToList().ForEach(RegisterType);
+            collection.BuildServiceProvider().GetRequiredService<RabbitWrapper>();
         }
         
         public static void InjectGraphQl(this IServiceCollection collection)

@@ -15,18 +15,16 @@ namespace Solaris.Web.CrewApi.Infrastructure.Filters
 
         public IQueryable<Robot> Filter(IQueryable<Robot> filterQuery)
         {
-            if (string.IsNullOrEmpty(SearchTerm))
-                return filterQuery;
-
-            filterQuery = Guid.TryParse(SearchTerm, out var guid)
-                ? filterQuery.Where(p => p.Id.Equals(guid) || p.ExplorersTeamId.Equals(guid))
-                : filterQuery.Where(p => EF.Functions.Like(p.Name, SearchTerm.ToMySqlLikeSyntax()));
+            if (!string.IsNullOrEmpty(SearchTerm))
+                filterQuery = Guid.TryParse(SearchTerm, out var guid)
+                    ? filterQuery.Where(p => p.Id.Equals(guid) || p.ExplorersTeamId.Equals(guid))
+                    : filterQuery.Where(p => EF.Functions.Like(p.Name, SearchTerm.ToMySqlLikeSyntax()));
 
             if (Ids == null || !Ids.Any())
                 return filterQuery;
-            
+
             Ids.ForEach(t => { filterQuery = filterQuery.Where(p => p.Id.Equals(t) || p.ExplorersTeamId.Equals(t)); });
-            
+
             return filterQuery;
         }
     }

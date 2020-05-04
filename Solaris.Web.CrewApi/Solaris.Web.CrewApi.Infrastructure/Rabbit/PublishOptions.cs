@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿﻿﻿﻿using System.Collections.Generic;
 
-namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
+   namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
 {
-    public class RpcOptions
+    public class PublishOptions
     {
         public string TargetQueue { get; set; }
         public Dictionary<string, object> Headers { get; set; }

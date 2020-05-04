@@ -1,4 +1,4 @@
-﻿namespace Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit
+﻿namespace Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses
 {
     public class RabbitResponse
     {

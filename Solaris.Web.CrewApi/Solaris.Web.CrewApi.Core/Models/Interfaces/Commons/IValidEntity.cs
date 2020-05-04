@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Solaris.Web.CrewApi.Core.Models.Interfaces
+namespace Solaris.Web.CrewApi.Core.Models.Interfaces.Commons
 {
     public interface IValidEntity
     {

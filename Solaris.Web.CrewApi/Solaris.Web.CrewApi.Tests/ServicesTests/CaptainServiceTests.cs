@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Entities;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
 using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;

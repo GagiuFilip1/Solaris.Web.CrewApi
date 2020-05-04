@@ -96,17 +96,28 @@
               <e p="Pagination.cs" t="Include" />
             </e>
             <e p="Rabbit" t="Include">
-              <e p="RabbitResponse.cs" t="Include" />
+              <e p="Responses" t="Include">
+                <e p="RabbitResponse.cs" t="Include" />
+                <e p="RobotUpdateResponse.cs" t="Include" />
+              </e>
+              <e p="Setup" t="Include">
+                <e p="QueueSetup.cs" t="Include" />
+                <e p="RabbitMqQueues.cs" t="Include" />
+                <e p="RabbitMqSettings.cs" t="Include" />
+              </e>
             </e>
-            <e p="RabbitMqQueues.cs" t="Include" />
-            <e p="RabbitMqSettings.cs" t="Include" />
           </e>
           <e p="Interfaces" t="Include">
+            <e p="Commons" t="Include">
+              <e p="IIdentifier.cs" t="Include" />
+              <e p="IValidEntity.cs" t="Include" />
+            </e>
             <e p="Filters" t="Include">
               <e p="IFilter.cs" t="Include" />
             </e>
-            <e p="IIdentifier.cs" t="Include" />
-            <e p="IValidEntity.cs" t="Include" />
+            <e p="Rabbit" t="Include">
+              <e p="IProcessor.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -163,9 +174,15 @@
           </e>
         </e>
         <e p="Rabbit" t="Include">
-          <e p="RpcClient.cs" t="Include" />
+          <e p="ListenOptions.cs" t="Include" />
+          <e p="Processors" t="Include">
+            <e p="RobotsUpdateRequestProcess.cs" t="Include" />
+          </e>
+          <e p="PublishOptions.cs" t="Include" />
+          <e p="QueueData.cs" t="Include" />
+          <e p="RabbitHandler.cs" t="Include" />
+          <e p="RabbitWrapper.cs" t="Include" />
           <e p="RpcData.cs" t="Include" />
-          <e p="RpcOptions.cs" t="Include" />
         </e>
         <e p="Repositories" t="Include">
           <e p="Implementations" t="Include">

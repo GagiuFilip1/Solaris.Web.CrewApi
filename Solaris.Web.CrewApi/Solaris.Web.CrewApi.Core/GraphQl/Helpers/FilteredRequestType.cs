@@ -1,5 +1,6 @@
 using GraphQL.Types;
 using Solaris.Web.CrewApi.Core.Models.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Interfaces.Commons;
 using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 
 namespace Solaris.Web.CrewApi.Core.GraphQl.Helpers

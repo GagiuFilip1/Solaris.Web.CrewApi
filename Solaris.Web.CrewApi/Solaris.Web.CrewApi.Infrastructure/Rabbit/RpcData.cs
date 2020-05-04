@@ -9,12 +9,12 @@ namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
 {
     public class RpcData : IDisposable
     {
-        public readonly BlockingCollection<string> ResponseQueue = new BlockingCollection<string>();
         public IBasicProperties BasicProperties { get; private set; }
-        public string ReplyQueueName { get; private set; }
         public EventingBasicConsumer Consumer { get; private set; }
         public IModel Channel { get; private set; }
         private IConnection Connection { get; set; }
+        public string ReplyQueueName { get; private set; }
+        public readonly BlockingCollection<string> ResponseQueue = new BlockingCollection<string>();
 
         public RpcData(IConnectionFactory factory, IDictionary<string, object> headers)
         {
@@ -25,7 +25,6 @@ namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
         {
             var rpcIdentity = Guid.NewGuid().ToString();
             Connection = factory.CreateConnection();
-
             Channel = Connection.CreateModel();
             Consumer = new EventingBasicConsumer(Channel);
             ReplyQueueName = Channel.QueueDeclare().QueueName;

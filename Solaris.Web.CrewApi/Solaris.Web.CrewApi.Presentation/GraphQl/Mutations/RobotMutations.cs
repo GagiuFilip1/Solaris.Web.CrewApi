@@ -6,6 +6,7 @@ using Solaris.Web.CrewApi.Core.GraphQl.Helpers;
 using Solaris.Web.CrewApi.Core.GraphQl.InputObjects.Robot;
 using Solaris.Web.CrewApi.Core.Models.Entities;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
+using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
 namespace Solaris.Web.CrewApi.Presentation.GraphQl.Mutations
@@ -16,8 +17,11 @@ namespace Solaris.Web.CrewApi.Presentation.GraphQl.Mutations
         private const string CREATE_REQUEST_ENDPOINT = "create";
         private const string DELETE_REQUEST_ENDPOINT = "update";
         private const string UPDATE_REQUEST_ENDPOINT = "delete";
+        private const string SEND_ROBOTS_REQUEST_ENDPOINT = "send";
         private const string UPDATE_CREATE_ARGUMENT_NAME = "robot";
         private const string DELETE_ARGUMENT_NAME = "id";
+        private const string PLANET_ARGUMENT_NAME = "planetId";
+        private const string ROBOTS_FILTER_ARGUMENT_NAME = "filter";
 
         public RobotMutations(IRobotService service)
         {
@@ -88,6 +92,36 @@ namespace Solaris.Web.CrewApi.Presentation.GraphQl.Mutations
                     try
                     {
                         await service.DeleteRobotAsync(id);
+                    }
+                    catch (ValidationException e)
+                    {
+                        context.Errors.Add(new ExecutionError(e.Message));
+                        return new ActionResponse(false);
+                    }
+                    catch (Exception)
+                    {
+                        context.Errors.Add(new ExecutionError("Server Error"));
+                        return new ActionResponse(false);
+                    }
+
+                    return new ActionResponse(true);
+                });
+
+            FieldAsync<ActionResponseType>(
+                SEND_ROBOTS_REQUEST_ENDPOINT,
+                "Send robots to explore the planet",
+                new QueryArguments(
+                    new QueryArgument<IdGraphType> {Name = PLANET_ARGUMENT_NAME, Description = "Robot Id used to identify which Robot will be deleted"},
+                    new QueryArgument<FilteredRequestType<Robot>> {Name = ROBOTS_FILTER_ARGUMENT_NAME, Description = "The filter which will retrieve the robots to be sent to the planet"}
+                ),
+                async context =>
+                {
+                    var planetId = context.GetArgument<Guid>(PLANET_ARGUMENT_NAME);
+                    var fiter = context.GetArgument<RobotFilter>(ROBOTS_FILTER_ARGUMENT_NAME);
+                    
+                    try
+                    {
+                        await service.SendRobotsToPlanetAsync(fiter, planetId);
                     }
                     catch (ValidationException e)
                     {

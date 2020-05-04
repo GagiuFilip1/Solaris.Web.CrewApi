@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Entities;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit;
+using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses;
 using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
@@ -26,14 +26,14 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
         private readonly IRobotRepository m_repository;
         private readonly IExplorersTeamRepository m_explorersTeamRepository;
         private readonly AppSettings m_appSettings;
-        private readonly RpcClient m_client;
+        private readonly RabbitHandler m_rabbitHandler;
 
-        public RobotService(ILogger<RobotService> logger, IRobotRepository repository, IExplorersTeamRepository explorersTeamRepository, RpcClient client, IOptions<AppSettings> appSettings)
+        public RobotService(ILogger<RobotService> logger, IRobotRepository repository, IExplorersTeamRepository explorersTeamRepository, RabbitHandler rabbitHandler, IOptions<AppSettings> appSettings)
         {
             m_logger = logger;
             m_repository = repository;
             m_explorersTeamRepository = explorersTeamRepository;
-            m_client = client;
+            m_rabbitHandler = rabbitHandler;
             m_appSettings = appSettings.Value;
         }
 
@@ -84,6 +84,20 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             }
         }
 
+        public async Task UpdateListOfRobotsAsync(List<Robot> robots)
+        {
+            foreach (var robot in robots)
+            {
+                var validationError = robot.Validate();
+                if (validationError.Any())
+                    throw new ValidationException($"A validation exception was raised while trying to update a Robot : {JsonConvert.SerializeObject(validationError, Formatting.Indented)}");
+                await EnsureRobotExistAsync(robot.Id);
+                CheckIfPlanetExist(robot.CurrentPlanetId);
+                await CheckExplorersTeamExistAsync(robot.ExplorersTeamId);   
+            }
+            await m_repository.UpdateAsync(robots);
+        }
+
         public async Task DeleteRobotAsync(Guid id)
         {
             try
@@ -108,10 +122,14 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             try
             {
                 var (_, searchedRobots ) = await SearchRobotAsync(new Pagination(), new Ordering(), filter);
-                var response = m_client.PublishRpc<RabbitResponse>(new RpcOptions
+                var response = m_rabbitHandler.PublishRpc<RabbitResponse>(new PublishOptions
                 {
                     TargetQueue = m_appSettings.RabbitMqQueues.SolarApiQueue,
-                    Message = JsonConvert.SerializeObject(searchedRobots.Select(t => t.Id)),
+                    Message = JsonConvert.SerializeObject(new
+                    {
+                        PlanetId = planetId,
+                        Robots = searchedRobots
+                    }),
                     Headers = new Dictionary<string, object>
                     {
                         {nameof(MessageType), nameof(MessageType.SendRobotsToPlanet)}
@@ -121,7 +139,11 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
                 if (response.IsSuccessful)
                 {
                     var (_, bots ) = await SearchRobotAsync(new Pagination(), new Ordering(), filter);
-                    bots.ForEach(robot => robot.CurrentStatus = RobotStatus.Occupied);
+                    bots.ForEach(robot =>
+                    {
+                        robot.CurrentStatus = RobotStatus.Occupied;
+                        robot.CurrentPlanetId = planetId;
+                    });
                     await m_repository.UpdateAsync(bots);
                 }
             }
@@ -167,7 +189,7 @@ namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
             if (!planetId.HasValue)
                 return;
 
-            var response = m_client.PublishRpc<RabbitResponse>(new RpcOptions
+            var response = m_rabbitHandler.PublishRpc<RabbitResponse>(new PublishOptions
             {
                 TargetQueue = m_appSettings.RabbitMqQueues.SolarApiQueue,
                 Message = planetId.ToString(),

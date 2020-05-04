@@ -1,4 +1,6 @@
-﻿namespace Solaris.Web.CrewApi.Core.Models.Helpers.Commons
+﻿using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Setup;
+
+namespace Solaris.Web.CrewApi.Core.Models.Helpers.Commons
 {
     public class AppSettings
     {

@@ -11,6 +11,7 @@ namespace Solaris.Web.CrewApi.Core.Services.Interfaces
     {
         Task CreateRobotAsync(Robot robot);
         Task UpdateRobotAsync(Robot robot);
+        Task UpdateListOfRobotsAsync(List<Robot> robots);
         Task DeleteRobotAsync(Guid id);
         Task SendRobotsToPlanetAsync(IFilter<Robot> filter, Guid planetId);
         Task<Tuple<int, List<Robot>>> SearchRobotAsync(Pagination pagination, Ordering ordering, IFilter<Robot> filter);
