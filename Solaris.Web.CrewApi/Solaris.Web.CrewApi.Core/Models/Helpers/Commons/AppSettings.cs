@@ -1,4 +1,4 @@
-﻿using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Setup;
+﻿using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Setup;
 
 namespace Solaris.Web.CrewApi.Core.Models.Helpers.Commons
 {

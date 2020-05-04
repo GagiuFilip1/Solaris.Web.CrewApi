@@ -10,14 +10,16 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Setup;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Responses;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Setup;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Models;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
 {
-    [RegistrationKind(Type = RegistrationType.Scoped, AsSelf = true)]
-    public class RabbitHandler
+    [RegistrationKind(Type = RegistrationType.Scoped)]
+    public class RabbitHandler : IRabbitHandler
     {
         private readonly AppSettings m_appSettings;
         private readonly ILogger<RabbitHandler> m_logger;

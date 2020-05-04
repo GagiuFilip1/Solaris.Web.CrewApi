@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Solaris.Web.CrewApi.Core.Models.Interfaces.Commons;
 
-namespace Solaris.Web.CrewApi.Core.Models.Interfaces.Filters
+namespace Solaris.Web.CrewApi.Core.Models.Filters.Interfaces
 {
     public interface IFilter<TEntity> where TEntity : IIdentifier
     {

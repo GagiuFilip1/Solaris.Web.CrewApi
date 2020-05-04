@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using Solaris.Web.CrewApi.Core.Enums;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Responses;
 
-namespace Solaris.Web.CrewApi.Core.Models.Interfaces.Rabbit
+namespace Solaris.Web.CrewApi.Core.Models.Rabbit.Interfaces
 {
     public interface IProcessor
     {

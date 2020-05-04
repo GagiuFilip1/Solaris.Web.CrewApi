@@ -8,27 +8,26 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Entities;
+using Solaris.Web.CrewApi.Core.Models.Filters.Implementation;
+using Solaris.Web.CrewApi.Core.Models.Filters.Interfaces;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Responses;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Interfaces;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Models;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
-using Solaris.Web.CrewApi.Infrastructure.Filters;
-using Solaris.Web.CrewApi.Infrastructure.Ioc;
-using Solaris.Web.CrewApi.Infrastructure.Rabbit;
 
-namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
+namespace Solaris.Web.CrewApi.Core.Services.Implementations
 {
-    [RegistrationKind(Type = RegistrationType.Scoped)]
     public class RobotService : IRobotService
     {
         private readonly ILogger<RobotService> m_logger;
         private readonly IRobotRepository m_repository;
         private readonly IExplorersTeamRepository m_explorersTeamRepository;
         private readonly AppSettings m_appSettings;
-        private readonly RabbitHandler m_rabbitHandler;
+        private readonly IRabbitHandler m_rabbitHandler;
 
-        public RobotService(ILogger<RobotService> logger, IRobotRepository repository, IExplorersTeamRepository explorersTeamRepository, RabbitHandler rabbitHandler, IOptions<AppSettings> appSettings)
+        public RobotService(ILogger<RobotService> logger, IRobotRepository repository, IExplorersTeamRepository explorersTeamRepository, IRabbitHandler rabbitHandler, IOptions<AppSettings> appSettings)
         {
             m_logger = logger;
             m_repository = repository;

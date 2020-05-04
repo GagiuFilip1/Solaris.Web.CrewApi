@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Models.Entities;
+using Solaris.Web.CrewApi.Core.Models.Filters.Implementation;
+using Solaris.Web.CrewApi.Core.Models.Filters.Interfaces;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
-using Solaris.Web.CrewApi.Infrastructure.Filters;
-using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
-namespace Solaris.Web.CrewApi.Infrastructure.Services.Implementations
+namespace Solaris.Web.CrewApi.Core.Services.Implementations
 {
-    [RegistrationKind(Type = RegistrationType.Scoped)]
     public class CaptainService : ICaptainService
     {
         private readonly ILogger<CaptainService> m_logger;

@@ -17,7 +17,7 @@ namespace Solaris.Web.CrewApi.Presentation
         private const string CONNECTION_STRING_PATH = "ConnectionStrings:CrewApi";
         private const string MIGRATION_ASSEMBLY = "Solaris.Web.CrewApi.Presentation";
         private const string REPOSITORIES_NAMESPACE = "Solaris.Web.CrewApi.Infrastructure.Repositories.Implementations";
-        private const string SERVICES_NAMESPACE = "Solaris.Web.CrewApi.Infrastructure.Services.Implementations";
+        private const string SERVICES_NAMESPACE = "Solaris.Web.CrewApi.Core.Services.Implementations";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

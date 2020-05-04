@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using IModel = RabbitMQ.Client.IModel;
 
-namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
+namespace Solaris.Web.CrewApi.Core.Models.Rabbit.Models
 {
     public class QueueData : IDisposable
     {

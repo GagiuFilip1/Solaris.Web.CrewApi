@@ -89,13 +89,33 @@
             <e p="Robot.cs" t="Include" />
             <e p="Shuttle.cs" t="Include" />
           </e>
+          <e p="Filters" t="Include">
+            <e p="Implementation" t="Include">
+              <e p="CaptainFilter.cs" t="Include" />
+              <e p="CrewMemberFilter.cs" t="Include" />
+              <e p="ExplorersTeamFilter.cs" t="Include" />
+              <e p="RobotFilter.cs" t="Include" />
+              <e p="ShuttleFilter.cs" t="Include" />
+            </e>
+            <e p="Interfaces" t="Include">
+              <e p="IFilter.cs" t="Include" />
+            </e>
+          </e>
           <e p="Helpers" t="Include">
             <e p="Commons" t="Include">
               <e p="Appsettings.cs" t="Include" />
               <e p="Ordering.cs" t="Include" />
               <e p="Pagination.cs" t="Include" />
             </e>
-            <e p="Rabbit" t="Include">
+          </e>
+          <e p="Interfaces" t="Include">
+            <e p="Commons" t="Include">
+              <e p="IIdentifier.cs" t="Include" />
+              <e p="IValidEntity.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Rabbit" t="Include">
+            <e p="Helpers" t="Include">
               <e p="Responses" t="Include">
                 <e p="RabbitResponse.cs" t="Include" />
                 <e p="RobotUpdateResponse.cs" t="Include" />
@@ -106,17 +126,15 @@
                 <e p="RabbitMqSettings.cs" t="Include" />
               </e>
             </e>
-          </e>
-          <e p="Interfaces" t="Include">
-            <e p="Commons" t="Include">
-              <e p="IIdentifier.cs" t="Include" />
-              <e p="IValidEntity.cs" t="Include" />
-            </e>
-            <e p="Filters" t="Include">
-              <e p="IFilter.cs" t="Include" />
-            </e>
-            <e p="Rabbit" t="Include">
+            <e p="Interfaces" t="Include">
               <e p="IProcessor.cs" t="Include" />
+              <e p="IRabbitHandler.cs" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="ListenOptions.cs" t="Include" />
+              <e p="PublishOptions.cs" t="Include" />
+              <e p="QueueData.cs" t="Include" />
+              <e p="RpcData.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -139,6 +157,13 @@
           </e>
         </e>
         <e p="Services" t="Include">
+          <e p="Implementations" t="Include">
+            <e p="CaptainService.cs" t="Include" />
+            <e p="CrewMemberService.cs" t="Include" />
+            <e p="ExplorersTeamService.cs" t="Include" />
+            <e p="RobotService.cs" t="Include" />
+            <e p="ShuttleService.cs" t="Include" />
+          </e>
           <e p="Interfaces" t="Include">
             <e p="ICaptainService.cs" t="Include" />
             <e p="ICrewMemberService.cs" t="Include" />
@@ -154,13 +179,6 @@
         <e p="Data" t="Include">
           <e p="DataContext.cs" t="Include" />
         </e>
-        <e p="Filters" t="Include">
-          <e p="CaptainFilter.cs" t="Include" />
-          <e p="CrewMemberFilter.cs" t="Include" />
-          <e p="ExplorersTeamFilter.cs" t="Include" />
-          <e p="RobotFilter.cs" t="Include" />
-          <e p="ShuttleFilter.cs" t="Include" />
-        </e>
         <e p="Ioc" t="Include">
           <e p="RegistrationKindAttribute.cs" t="Include" />
           <e p="RegistrationType.cs" t="Include" />
@@ -174,15 +192,11 @@
           </e>
         </e>
         <e p="Rabbit" t="Include">
-          <e p="ListenOptions.cs" t="Include" />
           <e p="Processors" t="Include">
             <e p="RobotsUpdateRequestProcess.cs" t="Include" />
           </e>
-          <e p="PublishOptions.cs" t="Include" />
-          <e p="QueueData.cs" t="Include" />
           <e p="RabbitHandler.cs" t="Include" />
           <e p="RabbitWrapper.cs" t="Include" />
-          <e p="RpcData.cs" t="Include" />
         </e>
         <e p="Repositories" t="Include">
           <e p="Implementations" t="Include">
@@ -191,15 +205,6 @@
             <e p="ExplorersTeamRepository.cs" t="Include" />
             <e p="RobotRepository.cs" t="Include" />
             <e p="ShuttleRepository.cs" t="Include" />
-          </e>
-        </e>
-        <e p="Services" t="Include">
-          <e p="Implementations" t="Include">
-            <e p="CaptainService.cs" t="Include" />
-            <e p="CrewMemberService.cs" t="Include" />
-            <e p="ExplorersTeamService.cs" t="Include" />
-            <e p="RobotService.cs" t="Include" />
-            <e p="ShuttleService.cs" t="Include" />
           </e>
         </e>
         <e p="Solaris.Web.CrewApi.Infrastructure.csproj" t="IncludeRecursive" />

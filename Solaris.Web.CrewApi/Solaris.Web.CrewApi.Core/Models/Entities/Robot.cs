@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Extensions;
-using Solaris.Web.CrewApi.Core.Models.Interfaces;
 using Solaris.Web.CrewApi.Core.Models.Interfaces.Commons;
 
 namespace Solaris.Web.CrewApi.Core.Models.Entities

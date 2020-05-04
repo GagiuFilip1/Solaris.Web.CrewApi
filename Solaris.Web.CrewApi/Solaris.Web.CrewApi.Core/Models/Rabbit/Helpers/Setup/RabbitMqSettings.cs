@@ -1,4 +1,4 @@
-﻿﻿namespace Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Setup
+﻿﻿namespace Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Setup
 {
     public class RabbitMqSettings
     {

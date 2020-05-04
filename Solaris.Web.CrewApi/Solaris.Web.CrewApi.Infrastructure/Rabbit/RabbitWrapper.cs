@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Extensions.Options;
-using Solaris.Web.CrewApi.Core.Enums;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Setup;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Rabbit;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Setup;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
@@ -12,10 +11,10 @@ namespace Solaris.Web.CrewApi.Infrastructure.Rabbit
     public class RabbitWrapper
     {
         private readonly AppSettings m_appSettings;
-        private readonly RabbitHandler m_handler;
+        private readonly IRabbitHandler m_handler;
         private readonly IEnumerable<IProcessor> m_processors;
 
-        public RabbitWrapper(IOptions<AppSettings> appSettings, RabbitHandler handler, IEnumerable<IProcessor> processors)
+        public RabbitWrapper(IOptions<AppSettings> appSettings, IRabbitHandler handler, IEnumerable<IProcessor> processors)
         {
             m_handler = handler;
             m_appSettings = appSettings.Value;

@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Solaris.Web.CrewApi.Core.Extensions;
 using Solaris.Web.CrewApi.Core.Models.Entities;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
+using Solaris.Web.CrewApi.Core.Models.Filters.Interfaces;
 
-namespace Solaris.Web.CrewApi.Infrastructure.Filters
+namespace Solaris.Web.CrewApi.Core.Models.Filters.Implementation
 {
     public class CaptainFilter : IFilter<Captain>
     {

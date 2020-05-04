@@ -5,8 +5,8 @@ using GraphQL.Types;
 using Solaris.Web.CrewApi.Core.GraphQl.Helpers;
 using Solaris.Web.CrewApi.Core.GraphQl.InputObjects.Robot;
 using Solaris.Web.CrewApi.Core.Models.Entities;
+using Solaris.Web.CrewApi.Core.Models.Filters.Implementation;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
-using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
 namespace Solaris.Web.CrewApi.Presentation.GraphQl.Mutations

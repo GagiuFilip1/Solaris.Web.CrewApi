@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Solaris.Web.CrewApi.Core.Enums;
+using Solaris.Web.CrewApi.Core.Models.Filters.Implementation;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Rabbit;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Responses;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Interfaces;
-using Solaris.Web.CrewApi.Infrastructure.Filters;
 using Solaris.Web.CrewApi.Infrastructure.Ioc;
 
 namespace Solaris.Web.CrewApi.Infrastructure.Rabbit.Processors

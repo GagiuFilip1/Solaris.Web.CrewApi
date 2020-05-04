@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Solaris.Web.CrewApi.Core.Models.Entities;
 
-namespace Solaris.Web.CrewApi.Core.Models.Helpers.Rabbit.Responses
+namespace Solaris.Web.CrewApi.Core.Models.Rabbit.Helpers.Responses
 {
     public class RobotUpdateResponse
     {

@@ -6,12 +6,12 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
 using Solaris.Web.CrewApi.Core.Models.Entities;
+using Solaris.Web.CrewApi.Core.Models.Filters.Implementation;
+using Solaris.Web.CrewApi.Core.Models.Filters.Interfaces;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
-using Solaris.Web.CrewApi.Infrastructure.Filters;
+using Solaris.Web.CrewApi.Core.Services.Implementations;
 using Solaris.Web.CrewApi.Infrastructure.Rabbit;
-using Solaris.Web.CrewApi.Infrastructure.Services.Implementations;
 using Xunit;
 
 namespace Solaris.Web.CrewApi.Tests.ServicesTests

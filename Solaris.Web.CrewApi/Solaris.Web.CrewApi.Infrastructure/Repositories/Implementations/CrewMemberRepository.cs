@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Solaris.Web.CrewApi.Core.Extensions;
 using Solaris.Web.CrewApi.Core.Models.Entities;
+using Solaris.Web.CrewApi.Core.Models.Filters.Interfaces;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
-using Solaris.Web.CrewApi.Core.Models.Interfaces.Filters;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Infrastructure.Data;
 
