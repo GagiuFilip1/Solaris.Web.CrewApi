@@ -46,13 +46,13 @@ Other optional Env Variables can be added to override the fields in the appSetti
 
 ## Input and Output
 GraphQL schema can be discovered using [GraphiQL](https://electronjs.org/apps/graphiql)
+http://localhost:5001/graphql
 
 ## Entity Framework Migrations
 Run the following command from **Solaris.Web.CrewApi.Presentation** folder:
 
 **dotnet ef migrations add {{name}} -c DataContext**
 
-make sure that you execute *protoc* from nuget and **not** a *protoc* cmdline deployed by an OS package manager. Othewise you risk that the generated file is not correct.
 
 ## Versioning
 
