@@ -9,6 +9,7 @@ using Solaris.Web.CrewApi.Core.Models.Entities;
 using Solaris.Web.CrewApi.Core.Models.Filters.Implementation;
 using Solaris.Web.CrewApi.Core.Models.Filters.Interfaces;
 using Solaris.Web.CrewApi.Core.Models.Helpers.Commons;
+using Solaris.Web.CrewApi.Core.Models.Rabbit.Interfaces;
 using Solaris.Web.CrewApi.Core.Repositories.Interfaces;
 using Solaris.Web.CrewApi.Core.Services.Implementations;
 using Solaris.Web.CrewApi.Infrastructure.Rabbit;
@@ -20,7 +21,7 @@ namespace Solaris.Web.CrewApi.Tests.ServicesTests
     {
         public RobotServiceTests()
         {
-            var client = new Mock<RabbitHandler>();
+            var client = new Mock<IRabbitHandler>();
             var settings = new Mock<IOptions<AppSettings>>();
           
             m_repositoryMock = new Mock<IRobotRepository>();

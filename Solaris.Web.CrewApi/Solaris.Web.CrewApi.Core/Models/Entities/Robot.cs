@@ -20,7 +20,7 @@ namespace Solaris.Web.CrewApi.Core.Models.Entities
         public List<string> Validate()
         {
             var errors = new List<string>();
-            if (!ProductNumber.HasOnlyNumbersAndLetters())
+            if (!ProductNumber.HasOnlyNumbers())
                 errors.Add("The product Number is invalid, must contain only numbers");
             
             return errors;
